@@ -4,7 +4,7 @@
   "description": "",
   "main": "webusb.js",
   "scripts": {
-    "watch": "parcel watch webusb.js --out-file dist/webusb.js",
+    "watch": "parcel watch webusb.js --out-file dist/webusb.js --no-hmr",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
