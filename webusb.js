@@ -33,18 +33,18 @@ const noopkaCoffee = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYA
 const emojis = "🤯,😇,💅,🤖,🦄,🙈,☕️,😭".split(",");
 
 canvas.onclick = (e) => {
-  const [x, y] = [e.offsetX - 16, e.offsetY - 16];
+  const [x, y] = [e.offsetX, e.offsetY];
   if(e.shiftKey) {
     const img = new Image();
     img.src = noopkaCoffee;
     img.onload = () => {
-      ctx.drawImage(img, x, y);
+      ctx.drawImage(img, x - 28, y - 28);
     };
     return;
   }
   ctx.font = '32px Arial';
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-  ctx.fillText(emoji,x,y);
+  ctx.fillText(emoji, x - 16, y + 16);
 };
 
 print.onclick = () => {
