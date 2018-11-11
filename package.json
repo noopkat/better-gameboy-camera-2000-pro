@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "browserslist": [
-    "last 1 version"
+    "last 1 Chrome version"
   ],
   "dependencies": {
     "esc-pos-encoder": "^1.2.0"
