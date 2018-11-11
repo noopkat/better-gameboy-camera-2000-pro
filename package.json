@@ -1,0 +1,22 @@
+{
+  "name": "thermal-booth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webusb.js",
+  "scripts": {
+    "watch": "parcel watch webusb.js --out-file dist/webusb.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    "last 1 version"
+  ],
+  "dependencies": {
+    "esc-pos-encoder": "^1.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^1.10.3"
+  }
+}

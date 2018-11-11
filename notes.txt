@@ -1,0 +1,19 @@
+Thermal Photobooth :D
+
+create a web browser based Photobooth with print functionality via webusb
+🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+
+Photobooth
+
+0. print image in general
+1. media stream
+2. video of the stream
+3. button take picture
+4. button print
+5. stretch goal = emoji!!!!
+
+printer
+
+0. take image
+1. encode it
+2. print it
