@@ -8,15 +8,13 @@ let ctx;
 let device;
 let myInterface = 0x00;
 
-button.onclick = () => {
-  navigator.mediaDevices.getUserMedia({
+button.onclick = async () => {
+  const stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
     video: true
-  })
-  .then(stream => {
-    video.srcObject = stream;
-    video.play(); 
-  })
+  });
+  video.srcObject = stream;
+  video.play();
 }
 video.onclick = () => {
   ctx = canvas.getContext('2d');
@@ -33,58 +31,52 @@ const noopkaCoffee = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYA
 const emojis = "🤯,😇,💅,🤖,🦄,🙈,☕️,😭".split(",");
 
 canvas.onclick = (e) => {
-  const [x, y] = [e.offsetX - 16, e.offsetY - 16];
+  const [x, y] = [e.offsetX, e.offsetY];
   if(e.shiftKey) {
     const img = new Image();
     img.src = noopkaCoffee;
     img.onload = () => {
-      ctx.drawImage(img, x, y);
+      ctx.drawImage(img, x - 28, y - 28);
     };
     return;
   }
   ctx.font = '32px Arial';
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-  ctx.fillText(emoji,x,y);
+  ctx.fillText(emoji, x - 16, y + 16);
 };
 
-print.onclick = () => {
-  navigator.usb.requestDevice({ filters: [{ productId: 0x20497 }] })
-    .then(device2 => {
-      device = device2;
-      return device.open();
-    })
-    .then(() => device.open())
-    .then(() => device.selectConfiguration(1))
-    .then(() => device.claimInterface(myInterface))
-    .then(() => device.controlTransferOut({
-      requestType: 'class',
-      recipient: 'interface',
-      request: 0x22,
-      value: 0x01,
-      index: myInterface
-    }))
-    .then(() => {
-      // const encoder = new TextEncoder();
-      // const uint8array = encoder.encode("\x1b@hello world\x0a\x0a\x0a");
-      // device.transferOut(1, uint8array);
-      const posEncoder = new EscPosEncoder();
+print.onclick = async () => {
+  device = await navigator.usb.requestDevice({ filters: [{ productId: 0x20497 }] })
+  await device.open();
+  await device.open();
+  await device.selectConfiguration(1);
+  await device.claimInterface(myInterface);
+  await device.controlTransferOut({
+    requestType: 'class',
+    recipient: 'interface',
+    request: 0x22,
+    value: 0x01,
+    index: myInterface
+  });
+  // const encoder = new TextEncoder();
+  // const uint8array = encoder.encode("\x1b@hello world\x0a\x0a\x0a");
+  // device.transferOut(1, uint8array);
+  const posEncoder = new EscPosEncoder();
 
-      canvas.toBlob(blob => {
-        const blobURL = URL.createObjectURL(blob);
-        const cat = new Image();
-        cat.onload = () => {
-          const result = posEncoder
-          .initialize()
-          .image(cat, 320, 320, 'bayer')
-          .encode();
+  canvas.toBlob(blob => {
+    const blobURL = URL.createObjectURL(blob);
+    const cat = new Image();
+    cat.onload = () => {
+      const result = posEncoder
+      .initialize()
+      .image(cat, 320, 320, 'bayer')
+      .encode();
 
-          device.transferOut(1, result);
-        }
+      device.transferOut(1, result);
+    }
 
-        cat.src = blobURL;
+    cat.src = blobURL;
 
-        
-        //asdklsdjfksdlf
-      });
-    });
+    //asdklsdjfksdlf
+  });
 }
