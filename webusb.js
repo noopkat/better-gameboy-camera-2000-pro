@@ -27,7 +27,8 @@ const printViaWebBluetooth = async () => {
   const bluetoothOptions = {
     filters: [
       {name: bluetoothName}
-    ]
+    ],
+    optionalServices: [bluetoothService]
   };
  
   try { 
