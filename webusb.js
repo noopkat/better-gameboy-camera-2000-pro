@@ -107,7 +107,15 @@ const createImageSource = () => {
   });
 };
 
-const capturePhoto = () => {
+const getPictureFrame = () => {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.src = 'images/printframe3.png';
+    image.onload = () => resolve(image);
+  });
+};
+
+const capturePhoto = async () => {
   canvas.style.display = 'block';
   canvasContext = canvas.getContext('2d');
 
@@ -122,10 +130,15 @@ const capturePhoto = () => {
 
   // dithering library needs a canvas object so we extract the image data again
   let imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
-  const dithered = Dither.bayer(imageData, 150);
+  const dithered = Dither.bayer(imageData, 120);
 
   // put the dithered version of the photo back onto the canvas as a print preview
   canvasContext.putImageData(dithered, 0, 0);
+
+  // overlay picture frame
+  const pictureFrame = await getPictureFrame();
+  canvasContext.drawImage(pictureFrame, 0, 0);
+
   video.style.display = 'none';
 };
 
