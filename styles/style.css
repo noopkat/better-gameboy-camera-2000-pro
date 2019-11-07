@@ -1,0 +1,112 @@
+body {
+  background: #99e9f1;
+  text-align: center;
+}
+
+.webboy {
+  width: 550px;
+  height: 800px;
+  text-align: center;
+  position: relative;
+  margin: 50px auto;
+  padding: 0;
+}
+
+.webboy img {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left: -10px;
+  top: -20px;
+}
+  
+.screenframe {
+  position: absolute;
+  top: 114px;
+  left: 70px;
+  width: 480px;
+  height: 380px;
+  border-radius: 15px 15px 60px 15px;
+}
+
+.screen {
+  position: relative;
+  background-color: black;
+  width: 320px;
+  height: 320px;
+  margin: 0px auto;
+  top: 30px;
+}
+
+.videowrapper {
+  position: absolute;
+  width: 318px;
+  height: 318px;
+  overflow: hidden;
+  left: 0px;
+  border: 2px solid black;
+}
+
+.canvastint {
+  position: absolute;
+  z-index: 999;
+  width: 320px;
+  height: 320px;
+  box-shadow: 0 3000px rgba(101, 148, 98, 0.4) inset;
+}
+
+canvas {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: none;
+  border: 2px solid black;
+}
+
+video {
+  position: absolute;
+  z-index: 998;
+  height: 320px;
+  left: -50px;
+  filter: saturate(0);
+}
+
+.buttons {
+  position: relative;
+  top: 588px;
+}
+
+#start, #select {
+  position: absolute;
+  height: 23px;
+  width: 85px;
+  background-color: grey;
+  border-radius: 40px;
+  border: 2px solid black;
+  transform: rotate(-25deg);
+  top: 241px;
+  left: 178px;
+  cursor: pointer;
+}
+
+#start {
+  left: 279px;
+}
+
+#a, #b {
+  position: absolute;
+  background-color: #7C0541;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  transform: rotate(-25deg);
+  right: -14px;
+  top: 36px;
+  cursor: pointer;
+}
+
+#b {
+  right: 84px;
+  top: 82px;
+}
+

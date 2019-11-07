@@ -1,3 +1,6 @@
 node_modules
 .cache
-dist
+dist/sw.js.map
+dist/sw.js
+dist/index.html
+

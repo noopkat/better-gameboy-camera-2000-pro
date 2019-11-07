@@ -5,18 +5,21 @@
   "main": "webusb.js",
   "scripts": {
     "watch": "parcel watch webusb.js --out-file dist/webusb.js --no-hmr",
+    "build": "parcel build webusb.js --out-file dist/webusb.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "browserslist": [
     "last 1 Chrome version"
   ],
   "dependencies": {
-    "esc-pos-encoder": "^1.2.0"
+    "canvas-dither": "^1.0.0",
+    "esc-pos-encoder": "^1.2.0",
+    "parcel-bundler": "^1.12.4"
   },
   "devDependencies": {
-    "parcel": "^1.10.3"
+    "parcel": "*"
   }
 }
