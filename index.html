@@ -1,16 +1,34 @@
 <!doctype html>
-<head>
-  <meta charset="utf-8" />
-</head>
-<style>
-  button {
-    font-size: 4em;
-  }
-</style>
-
-<button id="start">Take a picture</button>
-<button id="print">Print</button>
-<video></video>
-<canvas width=320 height=320></canvas>
-
-<script src="dist/webusb.js"></script>
+<html lang="en">
+  <head>
+    <title>Progressive Web Boy - a Web USB / Web Bluetooth demo</title>
+    <meta name="theme-color" content="#317EFB"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="webboy192.png" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="manifest" href="/manifest.json">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="webboy">
+        <img alt="an old school handheld gaming device" src="/images/webboy.svg" width="630"/>
+        <div class="screenframe">
+          <div class="screen">
+            <div class="canvastint"></div>
+            <div class="videowrapper">
+              <video></video>
+            </div>
+            <canvas width=320 height=320></canvas>
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="select" aria-label="print with web bluetooth"></button>
+          <button id="start" aria-label="start camera"></button>
+          <button id="a" aria-label="print with webusb"></button>
+          <button id="b" aria-label="capture photo"></button>
+        </div>
+      </div>
+    </div>
+    <script src="dist/webusb.js"></script>
+  </body>
+</html>
